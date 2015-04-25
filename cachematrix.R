@@ -1,7 +1,14 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## The following funtion creates a numeric vector that stores the matrix
+
+## The makeCacheMatrix function creates a special "vector", which is really a list containing a function to
+
+## set the value of the matrix
+## get the value of the matrix
+## set the value of the inverse matrix
+## get the value of the inverse matrix
+
 
 makeCacheMatrix <- function(x = numeric()) {
   m <- NULL
@@ -18,7 +25,10 @@ makeCacheMatrix <- function(x = numeric()) {
   
 }
 
-## The following function caculates the invese of the above vector/matrix
+## The following function calculates the inverse of the the above function. 
+## However, it first checks to see if the mean has already been calculated. 
+## If so, it gets the inverse from the cache and skips the computation. 
+## Otherwise, it calculates the inverse of the data and sets the value of the inverse in the cache via the setmatrix function.
 
 cacheSolve <- function(x, ...) {
   m <- x$getmatrix()
@@ -34,5 +44,10 @@ cacheSolve <- function(x, ...) {
 
 
 
+## Test
+## x = rbind(c(10, 3), c(10, 5))
+## m = makeCacheMatrix(x)
 
+## cacheSolve(m)
 
+## solve(x)
